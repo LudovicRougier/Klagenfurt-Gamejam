@@ -87,7 +87,9 @@ const render = () => {
 	let finishLine = bodies.find(thisBody => thisBody.label === 'finishLine');
 	Events.on(juggleBall.engine, 'collisionStart', function (event) {
 		if (Collision.collides(scoreBall, finishLine)) {
-			console.log("Finito");
+			let cube = document.querySelector('.cube');
+			cube.classList.add( 'show-left' );
+      cube.classList.remove('show-bottom');
 		}
 	});
 	Matter.Body.setAngularVelocity(juggleBall.engine.world.bodies[1],0);
@@ -117,6 +119,10 @@ const render = () => {
 	const ctx = juggleBall.canvas.getContext('2d');
 	//RESET CANVAS
 	ctx.clearRect(0, 0, game.size.width, game.size.height);
+	ctx.fillStyle = '#25292E';
+	ctx.rect(0, 0, game.size.width, game.size.height);
+	ctx.fill();
+
 	//CONFIGURE DRAWING
 
 	//START DRAWING
@@ -127,6 +133,7 @@ const render = () => {
 		ctx.lineWidth = 1;
 		ctx.strokeStyle = thisBody.render.strokeStyle;
 		ctx.fillStyle = thisBody.render.fillStyle;
+		ctx.lineWidth = thisBody.render.lineWidth;
 		let vertices = thisBody.vertices
 		ctx.moveTo(vertices[0].x, vertices[0].y);
 		for (let thisVertice of vertices) {
@@ -142,7 +149,7 @@ const render = () => {
 	mousePos = juggleBall.mouse.absolute;
 	ctx.beginPath();
 	ctx.arc(mousePos.x, mousePos.y, 5, 0, 2 * Math.PI);
-	ctx.fillStyle = "#000"
+	ctx.fillStyle = "#FFF"
 	ctx.fill();
 
 	//ASK TO RENDER THE NEXT FRAME
@@ -194,11 +201,12 @@ const juggleBall = {
 }
 
 class Ball {
-	constructor(x, y, radius, option, stroke, fill) {
+	constructor(x, y, radius, option, stroke, fill,lineWidth ) {
 		const { Render, World, Bodies, Composites, engine, Engine, Composite } = matter.get();
 		const thisCircle = Bodies.circle(x, y, radius, { friction: 0.1 });
 		thisCircle.render.fillStyle = fill ? fill : '#F0F';
 		thisCircle.render.strokeStyle = stroke ? stroke : '000';
+		thisCircle.render.lineWidth = lineWidth  ? lineWidth  : 1;
 		if (option) {
 			if (option.category === juggleBall.category.undraggable) {
 				thisCircle.collisionFilter.category = juggleBall.category.undraggable;
@@ -239,15 +247,16 @@ class level1 {
 
 		Composite.add(juggleBall.engine.world, [leftStarter, rightStarter]);
 		//Bowl
-		const leftWall = Bodies.rectangle(400, 100, 15, 50, { isStatic: true });
-		const rightWall = Bodies.rectangle(500, 100, 15, 50, { isStatic: true });
-		const bottomWall = Bodies.rectangle(450, 150, 75, 15, { isStatic: true });
+		const leftWall = Bodies.rectangle(400, 130, 5, 30, { isStatic: true , render: {fillStyle : '#FFF'}, angle: 15 });
+		const leftWall2 = Bodies.rectangle(400, 105, 5, 30, { isStatic: true , render: {fillStyle : '#FFF'}, angle: 4 });
+		const rightWall = Bodies.rectangle(495, 100, 5, 90, { isStatic: true ,render: {fillStyle : '#FFF'},angle:0 });
+		const bottomWall = Bodies.rectangle(450, 150, 90, 15, { isStatic: true,render: {fillStyle : '#FFF'}  });
 		const finishLine = Bodies.rectangle(450, 143, 30, 2, { isStatic: true, label: 'finishLine' });
 		finishLine.render.visible = false;
-		Composite.add(juggleBall.engine.world, [leftWall, rightWall, bottomWall, finishLine]);
+		Composite.add(juggleBall.engine.world, [leftWall, rightWall, bottomWall, finishLine,leftWall2]);
 
-		new Ball(65, 480, 30, { category: juggleBall.category.undraggable, label: "scoreBall" }, "#000", "#FFFFFF");
-		new Ball(300, 400, 30, { label: "playerBall" });
+		new Ball(65, 480, 30, { category: juggleBall.category.undraggable, label: "scoreBall" }, "#FFF", "rgba(0,0,0,0)",3);
+		new Ball(300, 400, 30, { label: "playerBall" },"rgba(0,0,0,0)", "#FFF",3);
 		console.log(juggleBall.engine.world.bodies);
 	}
 };
