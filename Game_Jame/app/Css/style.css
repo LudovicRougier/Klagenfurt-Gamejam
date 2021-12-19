@@ -31,7 +31,6 @@ body { font-family: sans-serif; }
   width: 800px;
   height: 800px;
   border: 2px solid black;
-  line-height: 600px;
   font-size: 40px;
   font-weight: bold;
   color: white;
@@ -54,19 +53,23 @@ body { font-family: sans-serif; }
 
 label { margin-right: 10px; }
 
-*{
-    box-sizing: border-box;
+.gameboard-path{
+  background-color: grey;
+}
+
+.gameboard-breakout{
+  background-color: grey;
 }
 
 .container{
-    margin: auto;
-    width: 600px;
-    height: 600px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  margin: auto;
+  max-width: 600px;
+  max-height: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.gameboard-path{
-    background-color: black;
+.btn-start-path{
+  max-width: 50px;
 }

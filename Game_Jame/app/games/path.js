@@ -92,7 +92,7 @@ canvasPath.addEventListener("mousedown", (event) => {
     ballPath.x = event.offsetX - event.target.offsetTop + mouseOffsetTop;
     ballPath.y = event.offsetY - event.target.offsetWidth + mouseOffsetLeft;
     if (!win && !PathgameOver) {
-      play();
+      playPath();
     }
   }
 });
@@ -125,6 +125,7 @@ canvasPath.addEventListener("mousemove", (event) => {
 drawPathApp();
 
 startBtn.addEventListener("click", (event) => {
+    console.log('cliqué');
   isMoving = false;
   win = false;
   PathgameOver = false;

@@ -237,7 +237,7 @@ const createBricks = () => {
 
 const resetBall = () => {
   ball.x = canvasBreakout.width / 2;
-  ball.y = paddle.y - BALL_RADIUS;
+  ball.y = paddle.y - BALL_RADIUS_BREAKOUT;
   ball.speed = BALL_SPEED;
   ball.dx = BALL_SPEED;
   ball.dy = -BALL_SPEED;
