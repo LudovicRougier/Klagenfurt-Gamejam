@@ -53,3 +53,20 @@ body { font-family: sans-serif; }
 .cube__face--bottom { transform: rotateX(-90deg) translateZ(400px); }
 
 label { margin-right: 10px; }
+
+*{
+    box-sizing: border-box;
+}
+
+.container{
+    margin: auto;
+    width: 600px;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.gameboard-path{
+    background-color: black;
+}
