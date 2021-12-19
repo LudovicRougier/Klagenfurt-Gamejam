@@ -97,6 +97,8 @@ label { margin-right: 10px; }
 .btn-start-breakout {
   padding: 25px 50px;
   cursor: pointer;
+}
+
 .btn-start-path{
   max-width: 50px;
 }
