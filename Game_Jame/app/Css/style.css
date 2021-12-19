@@ -38,7 +38,7 @@ body { font-family: sans-serif; }
   background-size: cover;
 }
 
-.cube__face--front, .cube__face--left {
+.cube__face--front {
   display:flex;
   flex-direction: column;
   align-items: center;
