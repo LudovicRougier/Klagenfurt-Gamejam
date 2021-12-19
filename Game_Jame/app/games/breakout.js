@@ -202,8 +202,8 @@ const showScore = () => {
  */
 const update = () => {
     if (breakoutWin || score === (brick.row * brick.column)) {
-        cube.classList.remove('show-back');
-        cube.classList.add('show-bottom');
+        cube.classList.add( 'show-back' );
+      cube.classList.remove('show-right')
     }
   movePaddle();
   moveBall();
