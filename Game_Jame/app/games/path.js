@@ -14,7 +14,7 @@ ctx.lineJoin = "bevel";
 ctx.strokeStyle = "green";
 
 let isMoving = false;
-let win = false;
+let winPath = false;
 let PathgameOver = false;
 let mouseOffsetTop = null;
 let mouseOffsetLeft = null;
@@ -80,7 +80,6 @@ const playPath = () => {
 };
 
 canvasPath.addEventListener("mousedown", (event) => {
-    console.log(event);
   if (
     ballPath.x - ballPath.radius < event.offsetX &&
     event.offsetX < ballPath.x + ballPath.radius &&
@@ -92,7 +91,7 @@ canvasPath.addEventListener("mousedown", (event) => {
     mouseOffsetLeft = ballPath.y - event.offsetY + event.target.offsetWidth;
     ballPath.x = event.offsetX - event.target.offsetTop + mouseOffsetTop;
     ballPath.y = event.offsetY - event.target.offsetWidth + mouseOffsetLeft;
-    if (!win && !PathgameOver) {
+    if (!winPath && !PathgameOver) {
       playPath();
     }
   }
@@ -109,15 +108,15 @@ canvasPath.addEventListener("mousemove", (event) => {
     ballPath.y = event.offsetY - event.target.offsetWidth + mouseOffsetLeft;
 
     if (ballPath.y + ballPath.radius > canvasPath.height) {
-      win = true;
+      winPath = true;
     }
     if (PathgameOver) {
       drawLoosePath();
     }
-    if (win) {
+    if (winPath) {
       drawVictoryPath();
     }
-    if (!win && !PathgameOver) {
+    if (!winPath && !PathgameOver) {
       playPath();
     }
   }
@@ -128,7 +127,7 @@ drawPathApp();
 startBtn.addEventListener("click", (event) => {
     console.log('cliqué');
   isMoving = false;
-  win = false;
+  winPath = false;
   PathgameOver = false;
   mouseOffsetTop = null;
   mouseOffsetLeft = null;

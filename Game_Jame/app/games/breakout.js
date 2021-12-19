@@ -9,8 +9,7 @@ const PADDLE_SIZE = {
 };
 
 //* declaring constants to create bricks
-const brick = {
- 
+const brick = { 
   row: 3,
   column: 6,
   gap: 20,
@@ -22,7 +21,6 @@ const brick = {
 };
 
 brick.width = Math.round((canvasBreakout.width - ((brick.column + 1) * brick.gap)) / brick.column);
-console.log(brick.width);
 
 //* declaring constants needed for the ball
 const BALL_RADIUS_BREAKOUT = 8;
@@ -36,6 +34,7 @@ let leftArrowPressed = false;
 let rightArrowPressed = false;
 let gameOver = false;
 let score = 0;
+let breakoutWin = false;
 
 function drawRectangle(x, y) {
   context.fillStyle = brick.fillColor;
@@ -218,6 +217,9 @@ const loop = () => {
   context.clearRect(0, 0, canvasBreakout.width, canvasBreakout.height);
   draw();
   update();
+  if (score === (brick.row * brick.column)){
+      breakoutWin = true;
+  }
   if (!gameOver && score < (brick.row * brick.column)) {
     requestAnimationFrame(loop);
   }
