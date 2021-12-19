@@ -80,11 +80,12 @@ const playPath = () => {
 };
 
 canvasPath.addEventListener("mousedown", (event) => {
+    console.log(event);
   if (
     ballPath.x - ballPath.radius < event.offsetX &&
     event.offsetX < ballPath.x + ballPath.radius &&
-    ballPath.y - ballPath.radius < event.offsetY - canvasPath.offsetTop &&
-    event.offsetY - canvasPath.offsetLeft < ballPath.y + ballPath.radius
+    ballPath.y - ballPath.radius < event.offsetY 
+    && event.offsetY < ballPath.y + ballPath.radius
   ) {
     isMoving = true;
     mouseOffsetTop = ballPath.x - event.offsetX + event.target.offsetTop;
