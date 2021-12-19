@@ -1,5 +1,5 @@
 const canvasPath = document.getElementById("gameboard-path");
-const startBtn = document.getElementById("start-btn-path");
+const startBtnPath = document.getElementById("start-btn-path");
 const ctx = canvasPath.getContext("2d");
 
 const ORIGIN = 0;
@@ -11,7 +11,7 @@ const BALL_RADIUS_PATH = GAP / 2.7;
 
 ctx.lineWidth = 3;
 ctx.lineJoin = "bevel";
-ctx.strokeStyle = "green";
+ctx.strokeStyle = "white";
 
 let isMoving = false;
 let winPath = false;
@@ -99,6 +99,17 @@ canvasPath.addEventListener("mousedown", (event) => {
 
 window.addEventListener("mouseup", (event) => {
   isMoving = false;
+
+  if(PathgameOver){
+    isMoving = false;
+    winPath = false;
+    PathgameOver = false;
+    mouseOffsetTop = null;
+    mouseOffsetLeft = null;
+    ballPath.x = 25;
+    ballPath.y = 45;
+    drawPathApp();
+  }
 });
 
 canvasPath.addEventListener("mousemove", (event) => {
@@ -115,6 +126,8 @@ canvasPath.addEventListener("mousemove", (event) => {
     }
     if (winPath) {
       drawVictoryPath();
+      cube.classList.add( 'show-back' );
+      cube.classList.remove('show-right')
     }
     if (!winPath && !PathgameOver) {
       playPath();
@@ -124,8 +137,7 @@ canvasPath.addEventListener("mousemove", (event) => {
 
 drawPathApp();
 
-startBtn.addEventListener("click", (event) => {
-    console.log('cliqué');
+startBtnPath.addEventListener("click", (event) => {
   isMoving = false;
   winPath = false;
   PathgameOver = false;

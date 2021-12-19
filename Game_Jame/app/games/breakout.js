@@ -1,5 +1,5 @@
 const canvasBreakout = document.getElementById('gameboard-breakout');
-const startbtn = document.getElementById('start-btn-breakout');
+const startBtnBreakout = document.getElementById('start-btn-breakout');
 const context = canvasBreakout.getContext('2d');
 
 // * Declaring constants for the paddle
@@ -16,7 +16,7 @@ const brick = {
   width: null,
   height: 20,
   margin: 40,
-  fillColor: 'blue',
+  fillColor: 'white',
   strokeColor: 'white',
 };
 
@@ -73,10 +73,10 @@ const drawBall = () => {
   context.beginPath();
   context.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
 
-  context.fillStyle = 'green';
+  context.fillStyle = 'white';
   context.fill();
 
-  context.strokeStyle = 'red';
+  context.strokeStyle = 'black';
   context.stroke();
 
   context.closePath();
@@ -87,7 +87,7 @@ const drawBall = () => {
  * @param {*} _
  */
 const drawPaddle = () => {
-  context.fillStyle = 'blue';
+  context.fillStyle = 'white';
   context.fillRect(paddle.x, paddle.y, paddle.width, paddle.height);
 
   context.strokeStyle = 'black';
@@ -201,6 +201,10 @@ const showScore = () => {
  * @param {*} _
  */
 const update = () => {
+    if (breakoutWin || score === (brick.row * brick.column)) {
+        cube.classList.remove('show-back');
+        cube.classList.add('show-bottom');
+    }
   movePaddle();
   moveBall();
   ballCollision();
@@ -219,6 +223,8 @@ const loop = () => {
   update();
   if (score === (brick.row * brick.column)){
       breakoutWin = true;
+      cube.classList.add('show-bottom');
+      cube.classList.remove('show-back');
   }
   if (!gameOver && score < (brick.row * brick.column)) {
     requestAnimationFrame(loop);
@@ -279,7 +285,7 @@ document.addEventListener('keyup', (event) => {
   }
 });
 
-startbtn.addEventListener('click', (event) => {
+startBtnBreakout.addEventListener('click', (event) => {
   gameOver = false;
   score = 0;
   reset();
