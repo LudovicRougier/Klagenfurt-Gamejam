@@ -3,11 +3,11 @@
 body { font-family: sans-serif; }
 
 .scene {
-  width: 900px;
-  height: 900px;
+  width: 800px;
+  height: 800px;
   border: 1px solid #CCC;
   margin: 80px;
-  perspective: 2000px;
+  perspective: 1600px;
 }
 
 .cube {
@@ -15,18 +15,20 @@ body { font-family: sans-serif; }
   height: 800px;
   position: relative;
   transform-style: preserve-3d;
-  transform: translateZ(-600px);
+  transform: translateZ(-400px);
   transition: transform 1s;
 }
 
-.cube.show-front  { transform: translateZ(-800px) rotateY(   0deg); }
-.cube.show-right  { transform: translateZ(-800px) rotateY( -90deg); }
-.cube.show-back   { transform: translateZ(-800px) rotateY(-180deg); }
-.cube.show-left   { transform: translateZ(-800px) rotateY(  90deg); }
-.cube.show-top    { transform: translateZ(-800px) rotateX( -90deg); }
-.cube.show-bottom { transform: translateZ(-800px) rotateX(  90deg); }
+.cube.show-front  { transform: translateZ(-400px) rotateY(   0deg); }
+.cube.show-right  { transform: translateZ(-400px) rotateY( -90deg); }
+.cube.show-back   { transform: translateZ(-400px) rotateY(-180deg); }
+.cube.show-left   { transform: translateZ(-400px) rotateY(  90deg); }
+.cube.show-top    { transform: translateZ(-400px) rotateX( -90deg); }
+.cube.show-bottom { transform: translateZ(-400px) rotateX(  90deg); }
 
 .cube__face {
+  display:flex;
+  flex-direction: column;
   position: absolute;
   width: 800px;
   height: 800px;
@@ -35,14 +37,16 @@ body { font-family: sans-serif; }
   font-weight: bold;
   color: white;
   text-align: center;
+  background-image:url(../images/RTS_Crate.png) ;
+  background-size: cover;
 }
 
-.cube__face--front  { background: hsla(  0, 100%, 50%, 0.7); }
-.cube__face--right  { background: hsla( 60, 100%, 50%, 0.7); }
-.cube__face--back   { background: hsla(120, 100%, 50%, 0.7); }
-.cube__face--left   { background: hsla(180, 100%, 50%, 0.7); }
-.cube__face--top    { background: hsla(240, 100%, 50%, 0.7); }
-.cube__face--bottom { background: hsla(600, 100%, 50%, 0.7); }
+/* .cube__face--front  { background: hsla(  0, 100%, 50%, 0.9); }
+.cube__face--right  { background: hsla( 60, 100%, 50%, 0.9); }
+.cube__face--back   { background: hsla(120, 100%, 50%, 0.9); }
+.cube__face--left   { background: hsla(180, 100%, 50%, 0.9); }
+.cube__face--top    { background: hsla(240, 100%, 50%, 0.9); }
+.cube__face--bottom { background: hsla(600, 100%, 50%, 0.9); } */
 
 .cube__face--front  { transform: rotateY(  0deg) translateZ(400px); }
 .cube__face--right  { transform: rotateY( 90deg) translateZ(400px); }
@@ -53,21 +57,16 @@ body { font-family: sans-serif; }
 
 label { margin-right: 10px; }
 
-.gameboard-path{
-  background-color: grey;
-}
-
-.gameboard-breakout{
-  background-color: grey;
+.gameboard-path, .gameboard-breakout{
+  background-color: #25292E;
 }
 
 .container{
   margin: auto;
   max-width: 600px;
   max-height: 600px;
-  display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 .btn-start-path{

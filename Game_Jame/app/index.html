@@ -13,11 +13,11 @@
 <body>
   <div class="scene">
     <div class="cube">
-      <div class="cube__face cube__face--front">Find your path
-        <div class="container">
-          <canvas width="600" height="600" class="gameboard-path" id="gameboard-path"></canvas>
-          <button id="start-btn-path" class="btn-start-path">Start</button>
-        </div>
+      <div class="cube__face cube__face--front"><h2>Presentation</h2>
+        <p>You received this box from a mysterious stranger, whith this box you found a paper.This is what's writtent on it</p>
+        <p>Our world is dying to air pollution, according to legends i started looking for the box to save us all, but i couldn't open it</p>
+        <p>You're our last hope</p>
+        <button id="start-btn" class="start-btn">Begin</button>
       </div>
       <div class="cube__face cube__face--back">Breakout
         <div class="container">
@@ -25,35 +25,17 @@
           <button id="start-btn-breakout" class="btn-start-breakout">Start</button>
         </div>
       </div>
-      <div class="cube__face cube__face--right">right</div>
+      <div class="cube__face cube__face--right">
+          <p>follow the path to run away</p>
+        <div class="container">
+          <canvas width="600" height="600" class="gameboard-path" id="gameboard-path"></canvas>
+          <button id="start-btn-path" class="btn-start-path">Start</button>
+        </div>
+    </div>
       <div class="cube__face cube__face--left">left</div>
       <div class="cube__face cube__face--top">top</div>
       <div class="cube__face cube__face--bottom">bottom</div>
     </div>
   </div>
-  <!-- ! -->
-  <h2>TEST BUTTON</h2>
-  <button class="winBtn">Appuyez ici </button>
-  <!-- ! -->
-  <p class="radio-group">
-    <label>
-      <input type="radio" name="rotate-cube-side" value="front" checked /> Find Your Path
-    </label>
-    <label>
-      <input type="radio" name="rotate-cube-side" value="right" /> right
-    </label>
-    <label>
-      <input type="radio" name="rotate-cube-side" value="back" /> Breakout
-    </label>
-    <label>
-      <input type="radio" name="rotate-cube-side" value="left" /> left
-    </label>
-    <label>
-      <input type="radio" name="rotate-cube-side" value="top" /> top
-    </label>
-    <label>
-      <input type="radio" name="rotate-cube-side" value="bottom" /> bottom
-    </label>
-  </p>  
 </body>
 </html>
