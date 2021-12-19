@@ -72,3 +72,36 @@ label { margin-right: 10px; }
 .btn-start-path{
   max-width: 50px;
 }
+
+.game__container {
+}
+.game__container > canvas {
+}
+
+
+.game {
+  border : 1px solid lightgray 
+}
+
+#dev-fps__container {
+  position : fixed;
+  top : 0px;
+  left: 650px;
+  width: 600px;
+  padding: 1rem;
+  background-color: lightsteelblue;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+#dev-fps__container > * {
+  padding : 1rem;
+  width: 600px;
+}
+
+#canvas {
+  cursor:none;
+}
